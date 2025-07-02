@@ -1,0 +1,221 @@
+/* General */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Menú lateral */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -20em;
+    width: 15em;
+    height: 100%;
+    background-color: rgba(68, 68, 68, 0.5);
+    padding-top: 2em;
+    box-shadow: 1em 0 0.3em rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: left 0.3s ease;
+}
+
+.menu.active {
+    left: 0;
+}
+
+.menu .logo {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.menu .logo img {
+    width: 10em;
+    height: auto;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    margin: 1em 0;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    display: block;
+    border-radius: 0.3em;
+}
+
+.menu ul li a:hover {
+    background-color: #555;
+}
+
+.submenu {
+    display: none;
+    padding-left: 1.5em;
+}
+
+.menu ul li.has-submenu:hover .submenu {
+    display: block;
+}
+
+/* Botón hamburguesa */
+.menu-toggle {
+    position: fixed;
+    top: 1em;
+    left: 1em;
+    z-index: 1100;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 2em;
+    height: 2em;
+}
+
+.menu-toggle div {
+    background-color: #fff;
+    height: 0.2em;
+    width: 2em;
+    border-radius: 0.1em;
+}
+
+/* Contenedor principal */
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    padding: 2em;
+}
+
+/* Sección izquierda: Datos personales */
+.user-data {
+    width: 25%;
+    height: auto;
+    background-color: #333;
+    color: #fff;
+    padding: 2em;
+    border-right: 0.2em solid #555;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 9.9em;
+    margin-bottom: 0;
+    align-self: flex-start;
+}
+
+.user-data .avatar img {
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    margin-bottom: 1.5em;
+    background-color: #444;
+}
+
+.user-data h2 {
+    font-size: 1.5em;
+    margin: 0.4em 0;
+}
+
+.user-data p {
+    margin: 0.5em 0;
+    font-size: 1em;
+}
+
+/* Sección derecha: Alcoholímetro y Tabla */
+.right-side {
+    width: 75%; /* Ajusta el ancho para equilibrar el espacio */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #222;
+    padding: 2em;
+}
+/* Título de la página (Registro de Alcoholímetro) */
+.title-container {
+    text-align: center; /* Centra el texto */
+    padding-top: 12em; /* Ajusta el padding superior para mover el título hacia abajo */
+}
+
+/* Estilo del título */
+.title-container h1 {
+    font-size: 2em; /* Tamaño del texto del título */
+    color: white; /* Color blanco para el título */
+    font-weight: bold; /* Fuente en negrita */
+    margin-top: 1em; /* Ajuste extra de margen superior si es necesario */
+}
+
+/* Tabla */
+table {
+    margin-top: 0em;
+    width: 100%;
+    max-width: 1200px;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 0.5em; /* Bordes redondeados */
+    overflow: hidden; /* Esconde los bordes si son más grandes */
+}
+
+/* Encabezado y celdas */
+th, td {
+    border: 0.1em solid #ccc;
+    padding: 1em; /* Aumenta el padding para mejorar la legibilidad */
+    text-align: center;
+}
+/* Encabezado de la tabla */
+th {
+    background-color: #444;
+    color: white;
+    font-weight: bold;
+    margin-top: 1.5em; /* Aumenta el margen superior para mover el título más abajo */
+}
+
+
+/* Filas de datos */
+td {
+    background-color: #f9f9f9;
+    color:#222;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .user-data {
+        width: 100%;
+        border-right: none;
+        border-bottom: 0.2em solid #555;
+        margin-top: 0;
+    }
+
+    .right-side {
+        width: 100%;
+        margin-top: 1em;
+    }
+
+    table {
+        font-size: 0.85em;
+    }
+
+    th, td {
+        padding: 0.8em; /* Ajuste de padding en celdas */
+    }
+}

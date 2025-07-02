@@ -1,0 +1,21 @@
+{
+    "name": "ines/pi2.0",
+    "description": "A PHP project to export data to Excel using PHPSpreadsheet.",
+    "type": "library",
+    "require": {
+        "phpoffice/phpspreadsheet": "1.20.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ines\\Pi20\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Inés",
+            "email": "ines@example.com"
+        }
+    ],
+    "minimum-stability": "stable"
+}

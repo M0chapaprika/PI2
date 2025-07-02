@@ -1,0 +1,206 @@
+/* Estilo general */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #333;
+    color: #fff;
+    font-size: 1em;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Menú lateral */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 15em;
+    height: 100%;
+    background-color: #444;
+    padding-top: 1.25em;
+    box-shadow: 2px 0 0.3125em rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    transition: width 0.3s ease;
+    display: block;
+}
+
+/* Logo dentro del menú */
+.logo {
+    text-align: center;
+    margin-bottom: 1.25em;
+}
+
+.logo img {
+    width: 10em;
+    height: auto;
+}
+
+.menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.menu ul li {
+    margin: 0.625em 0;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 0.625em;
+    display: block;
+    border-radius: 0.3125em;
+}
+
+.menu ul li a:hover {
+    background-color: #555;
+}
+
+/* Submenú */
+.submenu {
+    display: none;
+    list-style: none;
+    padding-left: 1.25em;
+}
+
+.menu ul li.has-submenu:hover .submenu {
+    display: block;
+}
+
+/* Contenedor principal */
+.container {
+    margin-left: 17em;
+    padding: 1.25em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 3.125em);
+}
+
+/* Logo global (no movido) */
+.logo-container {
+    position: relative;
+    text-align: center;
+    margin-top: 1.875em;
+}
+
+.logo-container img {
+    width: 100%;
+    max-width: 15em;
+    height: auto;
+}
+
+.logo-container h1 {
+    font-size: 1.5em;
+    color: #fff;
+    margin: 0.625em 0 0;
+}
+
+/* Formulario centrado */
+.login-form {
+    background-color: #4c9fbb;
+    padding: 1.25em;
+    border-radius: 0.5em;
+    box-shadow: 0 0.25em 0.5em rgba(31, 176, 169, 0.2);
+    width: 100%;
+    max-width: 25em;
+    margin-top: 1.25em;
+}
+
+.login-form h2 {
+    margin: 0 0 1.25em;
+    text-align: center;
+    color: #fff;
+}
+
+.login-form label {
+    display: block;
+    margin: 0.625em 0 0.3125em;
+    color: #fff;
+    font-size: 0.875em;
+}
+
+.login-form input {
+    width: 95%;
+    padding: 0.625em;
+    margin-bottom: 1.25em;
+    border: none;
+    border-radius: 0.25em;
+}
+
+.login-form button {
+    width: 100%;
+    padding: 0.625em;
+    background-color: #555;
+    color: #fff;
+    border: none;
+    border-radius: 0.25em;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.login-form button:hover {
+    background-color: #666;
+}
+
+/* Estilo responsivo */
+@media (max-width: 48em) { 
+    .menu {
+        width: 0;
+        display: none;
+        padding-top: 1.25em;
+    }
+
+    .logo-container {
+        left: 0;
+    }
+
+    .container {
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block;
+        background-color: #444;
+        padding: 0.625em;
+        position: fixed;
+        top: 1.25em;
+        left: 1.25em;
+        z-index: 1001;
+        border-radius: 0.3125em;
+        cursor: pointer;
+    }
+
+    .menu-toggle div {
+        background-color: #fff;
+        width: 1.5625em;
+        height: 0.1875em;
+        margin: 0.25em 0;
+        transition: 0.4s;
+    }
+
+    .menu.active {
+        display: block;
+        width: 15em;
+    }
+
+    .logo {
+        display: block;
+    }
+}
+
+@media (max-width: 30em) { 
+    .menu {
+        width: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .menu-toggle {
+        left: 0.625em;
+    }
+}
