@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Estudiante</title>
+</head>
+<body>
+    <h2>Buscar Estudiante por Matrícula</h2>
+    <a href="/acerca">Ir a vista Acerca</a>
+
+    <br><br><br>
+
+    <!-- Mostrar mensajes flash -->
+    {% with mensajes = get_flashed_messages() %}
+        {% if mensajes %}
+            {% for msj in mensajes %}
+                <h4 style="color: red;">{{ msj }}</h4>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- Formulario -->
+    <form action="/buscar" method="post">
+        <input type="text" name="matricula" placeholder="Ingresa tu matrícula" value="{{ request.form.matricula }}">
+        {% if errores and errores.matricula %}
+            <p style="color: red;">{{ errores.matricula }}</p>
+        {% endif %}
+
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>

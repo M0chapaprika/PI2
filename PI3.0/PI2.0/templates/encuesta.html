@@ -1,0 +1,30 @@
+<form id="encuestaForm" onsubmit="enviarEncuesta(event)">
+    <!-- Campos del formulario (manteniendo tus nombres originales) -->
+    <input type="text" name="nombre" required>
+    <input type="email" name="email" required>
+    <!-- ... otros campos ... -->
+
+    <button type="submit">Enviar</button>
+</form>
+
+<script>
+function enviarEncuesta(event) {
+    event.preventDefault();
+    const formData = new FormData(document.getElementById('encuestaForm'));
+    
+    fetch("{{ url_for('guardar_encuesta') }}", {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            alert('Encuesta enviada con éxito');
+            document.getElementById('encuestaForm').reset();
+        } else {
+            alert('Error: ' + (data.message || 'Intente nuevamente'));
+        }
+    })
+    .catch(error => alert('Error de conexión'));
+}
+</script>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Registro</title>
+    <link rel="stylesheet" href="assets/css/register-style.css">
+    <!-- Mantengo la referencia original al CSS -->
+    <style>
+        .nivel-verde { color: green; }
+        .nivel-amarillo { color: yellow; }
+        .nivel-rojo { color: red; }
+    </style>
+</head>
+<body>
+    <!-- Menú lateral (clases originales) -->
+    <nav class="menu">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="Logo">
+        </div>
+        <ul>
+            <li><a href="index.php">Inicio</a></li>
+        </ul>
+    </nav>
+
+    <!-- Botón hamburguesa (original) -->
+    <div class="menu-toggle">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- Contenedor principal (clases originales) -->
+    <div class="container" style="max-height: 80vh; overflow-y: auto;">
+        <div class="user-data">
+            <div class="avatar">
+                <img src="assets/images/avatar.png" alt="Avatar">
+            </div>
+            <h2>Datos del Estudiante</h2>
+            <div>
+                <p><strong>ID Persona:</strong> {{ estudiante.idPersona }}</p>
+                <p><strong>Nombre:</strong> {{ estudiante.nombre }} {{ estudiante.APaterno }} {{ estudiante.AMaterno }}</p>
+                <p><strong>Edad:</strong> {{ estudiante.Edad }}</p>
+                <p><strong>Matrícula:</strong> {{ estudiante.Matricula }}</p>
+            </div>
+        </div>
+
+        <!-- Sección de Alcoholímetro (clases originales) -->
+        <div class="right-side">
+            <div class="title-container">
+                <h1>Registro de Alcoholímetro</h1>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.registro</th>
+                        <th>Fecha</th>
+                        <th>Nombre del Autorizador</th>
+                        <th>Nivel</th>
+                        <th>Información Adicional</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reg in registros %}
+                    <tr>
+                        <td class="{% if reg.Medicion == 0.0 %}nivel-verde{% elif reg.Medicion < 0.5 %}nivel-amarillo{% else %}nivel-rojo{% endif %}">
+                            {{ reg.Medicion }}
+                        </td>
+                        <td>{{ reg.Fecha.strftime('%Y-%m-%d') }}</td> 
+                        <td>{{ reg.autorizador }}</td>
+                        <td class="{% if reg.Medicion == 0.0 %}nivel-verde{% elif reg.Medicion < 0.5 %}nivel-amarillo{% else %}nivel-rojo{% endif %}">
+                            {{ reg.Medicion }}
+                        </td>
+                        <td>{{ reg.Comentario or '' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="5" style="text-align: center;">Sin registros</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="{{ url_for('registroalcohol', matricula=estudiante.Matricula) }}" 
+                   class="btn btn-primary" 
+                   style="padding: 10px 20px; background-color: #007BFF; color: white; text-decoration: none; border-radius: 5px;">
+                    Agregar Registro
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script original (sin cambios) -->
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.menu').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
